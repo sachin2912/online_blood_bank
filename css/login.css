@@ -1,0 +1,24 @@
+body{
+	margin: 0;
+	padding :0;
+	background : url(../6.jpg);
+	background-size: cover;
+	height: 100vh;
+	background-position: center;
+	font-family: sans-serif;
+}
+#inner_full{
+	width: 80%
+	height:auto;
+}
+header{
+	width: 100%
+	height:50px;
+	background-color: red;
+	color: black;
+}
+footer{
+	width: 100%
+	height: 50px;
+	background-color: red;
+}

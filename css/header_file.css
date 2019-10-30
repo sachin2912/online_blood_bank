@@ -1,0 +1,113 @@
+div
+{
+  margin: none;
+  
+}
+body
+{
+  overflow-y: scroll;
+  height: 100%;
+  
+   
+}
+
+a,button
+{
+    text-decoration: none;
+    border: none;
+    font-size: 30px;
+    
+}    
+
+#menubar
+{
+    float: right;
+}
+.nav-member
+{
+    display: inline-block;
+    color: #3d0707;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    
+}
+
+button
+{
+    color: red;
+}
+.nav-member a:link
+{
+    color: #3d0707;
+}
+.nav-member a:visited
+{
+    color: #eb8484;
+    text-decoration: underline;
+}
+.nav-member a:hover
+{
+    color:  #eb9306;
+}
+.nav-member a:active
+{
+    color:  #d40909;
+    text-decoration: underline;
+}
+#user-login-modal
+{
+    display: none;
+   
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-image: url("../img/login.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 25px;
+  width: 50%;
+  height: 400px;
+}
+
+
+
+.row
+{
+    display: block;
+    padding: 5px;
+}
+
+.col
+{
+    display: inline-block;
+    padding: 5px;
+}
+.close1 {
+    color: black;;
+    float: left;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+

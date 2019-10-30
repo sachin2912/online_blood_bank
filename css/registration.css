@@ -1,0 +1,14 @@
+#registration-form
+{
+    width: 80%;
+    text-align: center;
+    background-color: red;
+}
+.row
+{
+    display: block;
+}
+.col
+{
+    display: inline-block;
+}
