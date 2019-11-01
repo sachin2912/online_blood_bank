@@ -32,7 +32,7 @@ class api_1
     function get_details($amt,$condition)
     {
         $sql = "select ".$amt." from ".$this->table.$condition;
-        return $this->get_result_from_db($sql,"S");
+        return $this->get_result_from_db($sql,"S1");
     }
 
 

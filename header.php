@@ -10,19 +10,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" type="text/css" href="css/header_file.css"/>
         <link rel="stylesheet" type="text/css" href="css/footer_file.css"/>
-        
-
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
         <script src="js/header_file.js" type="text/javascript" defer></script>    
-        <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
-        <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
-        
     </head>
     <body>
         <div id="top-main-container" class="topcontainer">
-            
             <div class="nav-member">
                 <a href="?action=home">
                     <img src="img/pic.png" alt="logo-blood-donation" width=50px height=50px>
@@ -78,9 +70,9 @@
                         else if ($_SESSION["type"]=="hospital")
                         {
                             echo"<div class='nav-member'>
-                                <a href='?action=request-blood'>
-                                        Request for Blood Donation
-                                    </a>
+                                <button id='request-btn'>
+                                    Request for Blood Donation
+                                </button>
                                 </div>
                                 <div class='nav-member'>
                                     <a href='?action=hospital-history&uid=".$_SESSION['uname']."'>
@@ -151,5 +143,6 @@
                 
             </div>        
         </div>
-            
+
+
         

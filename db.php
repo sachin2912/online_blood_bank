@@ -23,12 +23,17 @@ class DB {
             $this->res = $this->conn->query($sql);
             if ($type=="S1")
             {
-                if ($this->res->num_rows>0) 
-                {
+                if ($this->res->num_rows>0)
+
+                {   
+                    
                     $data = [];
-                    while($row = $this->res->fetch_assoc()) {
+                    while($row = $this->res->fetch_assoc()) 
+                    {
                         $data[] = $row;
+                        
                     }
+                    
                     return $data;
                 }
             }

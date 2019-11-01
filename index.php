@@ -7,7 +7,9 @@
     session_start();
     require("data_api.php");
     require("db.php");
-    include("header.php") ;
+    require("basic_requirements.php");
+    include("header.php");
+    
     switch($act)
     {
         case 'home':
@@ -38,7 +40,7 @@
                     include("about_us.php") ;
                     break ;
         case 'request-blood':
-                    include("request_blood.php") ;
+                    include("request.php") ;
                     break ;            
 
         case 'enquiry':
