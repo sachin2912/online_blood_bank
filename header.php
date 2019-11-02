@@ -10,7 +10,7 @@
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" type="text/css" href="css/header_file.css"/>
-        <link rel="stylesheet" type="text/css" href="css/footer_file.css"/>
+        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="js/header_file.js" type="text/javascript" defer></script>    
     </head>
@@ -36,7 +36,7 @@
                     if(!isset($_SESSION["uname"]))
                     {    
                         echo "<div class='nav-member'>      
-                                    <button id='login-btn'>
+                                    <button id='login-btn' onclick='openForm()'>
                                         Login
                                     </button>
                             </div>
@@ -71,9 +71,9 @@
                         else if ($_SESSION["type"]=="hospital")
                         {
                             echo"<div class='nav-member'>
-                                <button id='request-btn'>
+                                <a href='?action=request-blood'>
                                     Request for Blood Donation
-                                </button>
+                                </a>
                                 </div>
                                 <div class='nav-member'>
                                     <a href='?action=hospital-history&uid=".$_SESSION['uname']."'>
@@ -97,53 +97,28 @@
                 
             </div>
         </div>    
-        <div id="user-login-modal" class="modal">
-            <div class="modal-content">
+            
+
+        <div class="form-popup" id="myForm">
+            <form method="POST" action="?action=login" class="form-container">
+                <h1>Login</h1>
                 <div class="row">
                     <div class="col">
-                        <h1 style="text-align: center;">Login</h1>
+                        <input type="radio" name="type" value="user">User
                     </div>
-                    <div class="col" id="close1">    
-                        <span class="close">&times;
-                                            
-                        </span>
-                    </div>    
-                </div>    
-                    <form id="login-form" method="POST" action="?action=login">
-                        <div class="row">
-                            <div class="col">
-                                <input type="radio" name="type" value="user">User
-                            </div>
-                            <div class="col">
-                                <input type="radio" name="type" value="hospital">Hospital
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                Username
-                            </div>
-                            <div class="col">
-                                <input type="text" name="username" id="uname" placeholder="Username ..." maxlength="25" required>
-                            </div>
-                        </div>
-                        <div class="row">    
-                            <div class="col">
-                                Password
-                            </div>
-                            <div class="col">
-                                <input type="password" name="password" id="pass" placeholder="*******" maxlength="25" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <input type="submit" value="Login">
-                            </div>
-                        </div>
-                    </form>
+                    <div class="col">
+                        <input type="radio" name="type" value="hospital">Hospital
+                    </div>
+                </div>
                 
-                
-            </div>        
-        </div>
+                <label for="username"><b>Username</b></label>
+                <input type="text" name="username" id="uname" placeholder="Username ..." maxlength="25" required>
+                <label for="password"><b>Password</b></label>
+                <input type="password" name="password" id="pass" placeholder="*******" maxlength="25" required>
 
+                <button type="submit" class="btn">Login</button>
+                <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+        </div>
 
         

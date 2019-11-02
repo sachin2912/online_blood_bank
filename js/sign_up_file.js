@@ -1,4 +1,4 @@
-var add = document.getElementsByName("address");
+var add = document.getElementById("p").in;
 var add_val = add.values;
 function opp()
 {

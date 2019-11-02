@@ -1,9 +1,8 @@
-<?php
 
-?>
-    <br>
-    <br>
-    <br>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/footer_file.css"/>
+    </head>
+    
         <div id="footer-main-container">
             <div id="right-container">
                 <h2>

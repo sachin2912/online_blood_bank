@@ -1,5 +1,5 @@
 <?php
-	require("get_loc.php");
+	
 	
 	if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
 	{

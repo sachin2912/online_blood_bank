@@ -1,19 +1,9 @@
-var modal=document.getElementById("user-login-modal");
-var btn=document.getElementById("login-btn");
-var span=document.getElementsByClassName("close")[0];
-var span1=document.getElementsByClassName("close")[1];
-btn.onclick = function()
+function openForm() 
 {
-    modal.style.display="block";
+    document.getElementById("myForm").style.display = "block";
 }
-span.onclick = function()
+  
+function closeForm() 
 {
-    modal.style.display="none";
-}
-window.onclick = function(event)
-{
-    if (event.target == modal)
-    {
-        modal.style.display="none";
-    }    
+    document.getElementById("myForm").style.display = "none";
 }
