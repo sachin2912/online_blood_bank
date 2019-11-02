@@ -2,8 +2,9 @@
     <head>
         <title>
             <?php
+                $title = $_REQUEST["action"]??"home";
                 echo "BLOOD BANK - A unique platform for blood donation : ".
-                $_REQUEST["action"];
+                $title;
             ?>
         </title>
         <meta charset="UTF-8"/>

@@ -1,6 +1,9 @@
 <?php
 
 ?>
+    <br>
+    <br>
+    <br>
         <div id="footer-main-container">
             <div id="right-container">
                 <h2>
@@ -37,37 +40,29 @@
                     Quick Links
                 </h2>
                 <div class="nav-member-f">
-                    <a href="#">
+                    <a href="?action=home">
+                        Home
+                    </a>
+                </div>
+                <div class="nav-member-f">
+                    <a href="?action=sign">
                         ABC
-
                     </a>
                 </div>
                 
                 <div class="nav-member-f">
                     <a href="#">
                         ABC
-
                     </a>
                 </div>
-                
                 <div class="nav-member-f">
                     <a href="#">
                         ABC
-
                     </a>
                 </div>
-                
                 <div class="nav-member-f">
                     <a href="#">
                         ABC
-
-                    </a>
-                </div>
-                
-                <div class="nav-member-f">
-                    <a href="#">
-                        ABC
-
                     </a>
                 </div>
             </div>

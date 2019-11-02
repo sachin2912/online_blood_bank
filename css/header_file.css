@@ -2,11 +2,7 @@ div
 {
   margin: none;
 }
-body
-{
-  overflow-y: scroll;
-  height: 100%;
-}
+
 
 a,button
 {

@@ -13,13 +13,13 @@
     switch($act)
     {
         case 'home':
-                    include("homepage.php") ;
+                    include("home_page.php") ;
                     break ;
         case 'about-us':
                     include("about_us.php") ;
                     break ;
         case 'team':
-                    include("about_us.php") ;
+                    include("team_info.php") ;
                     break;
         case 'login':
                     include("login.php") ;
@@ -31,13 +31,13 @@
                     include("logout.php") ;
                     break ;
         case 'faq':
-                    include("about_us.php") ;
+                    include("faq.php") ;
                     break ;
-        case 'hospital-histroy':
-                    include("about_us.php") ;
+        case 'hospital-history':
+                    include("hos_history.php") ;
                     break ;
         case 'view-profile':
-                    include("about_us.php") ;
+                    include("view_profile.php") ;
                     break ;
         case 'request-blood':
                     include("request.php") ;
