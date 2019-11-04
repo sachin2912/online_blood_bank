@@ -119,18 +119,3 @@ p
 {
   font-family: cursive;
 }
-.section:hover
-{
-  background-color: black;
-  color: aqua;
-}
-.left-section:hover
-{
-  background-color: black;
-  color: aqua;
-}
-.right-section:hover
-{
-  background-color: black;
-  color: aqua;
-}

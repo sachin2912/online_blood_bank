@@ -6,6 +6,15 @@
     text-align: center;
 
 }
+#about-us-img
+{
+    width: 100%;
+}
+#about-us-img img
+{
+    width: 100%;
+    height: 40%;
+}
 h1
 {
     color: #0eee85;

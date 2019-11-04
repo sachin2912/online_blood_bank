@@ -36,12 +36,9 @@ class api_1
     }
 
 
-    
-
     function get_result_from_db( $sql , $type ) 
     {
         return $this->db->execute( $sql , $type );
-           
     }
 
 }

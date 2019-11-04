@@ -39,3 +39,21 @@ ab_neg.onclick = function()
 {
 document.getElementById("requests-users-details").innerHTML = document.getElementById("AB_neg_view").innerHTML;
 };
+
+function sendemail(user_uname,h_name)
+{   
+    alert(user_uname);
+    $.ajax(
+        {
+            url:"?action=send_request_mail",
+            
+            type: "POST",
+            data : {
+                username: user_uname,
+                hospital_name: h_name
+            },
+            
+            
+        }
+    )
+}

@@ -1,6 +1,4 @@
-<?php
-    
-?>
+
 <head>
     <link rel="stylesheet" type="text/css" href="css/home_page_file.css"/>
 </head>
@@ -10,19 +8,16 @@
 
     <!-- Full-width images with number and caption text -->
         <div class="mySlides fade">
-            <div class="numbertext">1 / 3</div>
             <img src="img/4.png" width=100%>
             <div class="text">Our Initiative</div>
         </div>
 
         <div class="mySlides fade">
-            <div class="numbertext">2 / 3</div>
             <img src="img/slide2.png" width=100%;>
             
         </div>
 
         <div class="mySlides fade">
-            <div class="numbertext">3 / 3</div>
             <img src="img/slide3.jpg" width=100%>
             
         </div>

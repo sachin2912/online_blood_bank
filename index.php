@@ -9,7 +9,6 @@
     require("db.php");
     require("basic_requirements.php");
     include("header.php");
-    
     switch($act)
     {
         case 'home':
@@ -42,7 +41,12 @@
         case 'request-blood':
                     include("request.php") ;
                     break ;            
-
+        case 'send_request_mail' :
+                    echo "<script>
+                    alert('idhar');
+                    </script>";
+                    include ("make_request_mail.php");
+                    break;
         case 'enquiry':
                     include("enquiry.php");
                     break;
@@ -51,6 +55,5 @@
         
     }
     include("footer.php") ;
-                    
-
+   
 ?>

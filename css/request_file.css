@@ -1,6 +1,33 @@
 #filter-list
 {
-    width: 80%;
-    padding: 3px;
+    margin: auto;
+    width: 100%;
+    padding: 2%;
     display: inline-block;
+    text-align: center;
+    
+}
+
+#filter-list button
+{
+    width: 10%;
+    padding: 1.2%;
+}
+#filter-list button:hover
+{
+    transform: scale(1);
+}
+
+#filter-list button:active
+{
+    transform: scale(1.5);
+}
+#requests-users-details
+{
+    
+    left: 200px;
+}
+.zoom-class:hover
+{
+    transform: scale(1.2);
 }

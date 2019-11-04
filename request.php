@@ -10,7 +10,8 @@
 
       {
         $count++;
-        $result_table.= "<tr height=20px> <td> S.no </td> 
+        $arg = '"'.$users[$i]["uname"].'","'.$_SESSION["uname"].'"';
+        $result_table.= "<tr><td><table class='zoom-class'><tr height=20px> <td> S.no </td> 
         <td> Name </td>
         <td> Blood Group </td>
         <td> Address </td>
@@ -21,7 +22,9 @@
         .$users[$i]["fname"]." ".$users[$i]["lname"]."</td><td>".
         $users[$i]["blood_group"]."</td><td>".
         $users[$i]["user_address"]."</td><td>".$users[$i]["email"].
-        "</td><td>".$users[$i]["mobile_number"]."</td></tr>";
+        "</td><td>".$users[$i]["mobile_number"]."</td></tr>
+        <tr><td colspan='6' align='center'><button id='".$users[$i]["uname"]."-request-btn' onclick='sendemail($arg)' >Request for Blood
+        </button></td></tr></table></td></tr>";
       }
     }
 
@@ -58,11 +61,14 @@
   <meta name="viewport" content="initial-scale=1.0, width=device-width" />
   <link rel="stylesheet" type="text/css" href="css/request_file.css"/>
   <script src="js/request_file.js" type="text/javascript" defer></script>
+  <script src='js/jquery-3.4.1.min.js'></script>
+  <script src='js/request_sendemail.js' defer></script>
   <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
   <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
   <script src="https://js.api.here.com/v3/3.1/mapsjs-clustering.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <div id="request-main">
+  <h1 style="text-align: center;"> Select the Blood Group for donatation <h1>
   <div id="filter-list">
     <button  id="btn-O+">O+</button>
     <button  id="btn-A+">A+</button>
@@ -125,7 +131,7 @@
     echo display_users($acc_users,$arr); 
   ?>
 </div>
-  <div style="width: 50%; height: 80%; float: right;" id="mapContainer"></div>
+  <div style="width: 40%; height: 80%; float: right;" id="mapContainer"></div>
 
 <script>
   var platform = new H.service.Platform({

@@ -6,29 +6,30 @@
     height: auto;
     overflow: auto;
     border: solid 2px black;
-    padding: 5px;
     width: 100%;
-    
+    padding: 5%;    
 }
 #right-container
 {
     float: right;
-    
     text-align: center;
     width: 50%;
 }
-
+a
+{
+    font-size: 20px;
+    text-decoration: none;
+    color: honeydew;
+}
 #left-container
 {
     float: left;
-   
     text-align: center;
     width: 50%;
 }
 .nav-member-f
 {
     display: block;
-    
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 

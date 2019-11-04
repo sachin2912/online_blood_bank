@@ -45,7 +45,7 @@
                 </div>
                 <div class="nav-member-f">
                     <a href="?action=sign">
-                        ABC
+                        
                     </a>
                 </div>
                 

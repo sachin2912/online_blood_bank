@@ -2,6 +2,9 @@
     <link rel="stylesheet" type="text/css" href="css/about_us_file.css"/>
 </head>
 <div id = "about-us">
+    <div id = "about-us-img">
+        <img src = "img/about_us_1.gif" alt = "ABOUT US GIF">
+    </div>    
     <h1>About Us</h1>
     <h2> Our Uniquiness </h2>
     <p>

@@ -1,6 +1,7 @@
 div
 {
   margin: auto;
+  font-size: 16px;
 }
 #top-main-container
 {
@@ -13,7 +14,7 @@ a,button
 {
     text-decoration: none;
     border: none;
-    font-size: 30px;
+    font-size: 20px;
 }    
 
 #menubar
@@ -67,7 +68,7 @@ button
   padding: 5px;
 }
 
-{box-sizing: border-box;}
+*{box-sizing: border-box;}
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
@@ -97,7 +98,7 @@ button
 .form-container {
   max-width: 300px;
   padding: 10px;
-  background-color: white;
+  background-image: url("img/login_1.gif");
 }
 
 /* Full-width input fields */

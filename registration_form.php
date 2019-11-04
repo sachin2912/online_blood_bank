@@ -1,6 +1,4 @@
 <?php
-	
-	
 	if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
 	{
 		if ( isset( $_POST["fname"] ) )
@@ -22,14 +20,10 @@
 
 		}
 	}
-	
 ?>
-<style>
-	.posneg
-	{
-		display: block;
-	}
-</style>	
+<head>
+	<link rel="stylesheet" type="text/css" href="css/registration.css"/>
+</head>
 <div id="button-change" style="width: 100%;
     display: inline-block;
     text-align: center;">    
@@ -42,7 +36,7 @@
 </div>
 <div id="registraion-form" style="text-align: center;">
 	
-	<form id="user-reg-form" method="POST" action="?action=signup">
+	<form id="user-reg-form" onsubmit="validate(1)" method="POST" action="?action=signup">
 		<h1>Registration Form </h1>
 		<div class="row">
 			<div class="col">
@@ -142,7 +136,7 @@
 	
 
 
-	<form id="hos-reg-form" method="POST" style="display: none;" action="?action=signup">
+	<form id="hos-reg-form" method="POST" onsubmit="validate(2)" style="display: none;" action="?action=signup">
 	<h1>Registration Form </h1>
 		<div class="row">
 			<div class="col">
