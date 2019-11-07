@@ -7,11 +7,11 @@
 			$latlong = array();
 			$latlong = get_location($_POST["address"]);
 			$api_obj = new api_1($db_obj,"user");
-			$field = "fname,lname,uname,user_address,latitude,longitude,email,mobile_number,blood_group";
+			$field = "fname,lname,uname,user_address,latitude,longitude,email,mobile_number,blood_group,age,weight";
 			$values = "'" . $_POST["fname"] . "'," . "'" . $_POST["lname"] . "'," . "'" . $_POST["uname"]. 
 			"'," . "'". $_POST["address"] . "'," . "'" . $latlong[0] . "'," . "'" . $latlong[1] . "'," .
 			"'" . $_POST["email"] . "'," . "'" . $_POST["mnumber"] . "'," .
-			"'" . $_POST["blood_group"] . "'" ;
+			"'" . $_POST["blood_group"] . "'," ."'" . $_POST["age"] . "',"."'" . $_POST["weight"] . "'"  ;
 			$api_obj->insert_details($field,$values);
 			$api_obj1 = new api_1($db_obj,"logincredentails");
 			$field1="uname,password,status";
@@ -23,6 +23,7 @@
 ?>
 <head>
 	<link rel="stylesheet" type="text/css" href="css/registration.css"/>
+
 </head>
 <div id="button-change" style="width: 100%;
     display: inline-block;
@@ -52,6 +53,7 @@
 				<input type="text" name="lname" placeholder="singh" maxlenght=25 required>
 			</div>
 		</div>
+
 		<div class="row">
 			<div class="col">
 				Email
@@ -66,7 +68,44 @@
 				<input type="text"  name="mnumber" placeholder="9632587410" required>
 			</div>
 		</div>
+		
 		<div class="row">
+			<div class="col">
+				Username
+			</div>
+			<div class="col">
+				<input type="text" name="uname" placeholder="username ... " maxlength=25 required>
+			</div>
+			<div class="col">
+				Weight
+			</div>
+			<div class="col">
+				<input type="number" name="weight" placeholder="50" required>(in KGs)
+			</div>
+		</div>
+		<div class="row">	
+			<div class="col">
+				Password
+			</div>
+			<div class="col">
+				<input type="password" name="pass" placeholder="*******" maxlength=25 required>
+			</div>
+			<div class="col">
+				Confirm Password
+			</div>
+			<div class="col">
+				<input type="password" name="confirm_pass" placeholder="*******" maxlength=25 required>
+			</div>
+		</div>
+		
+		<div class="row">
+			
+			<div class="col">
+				Age
+			</div>
+			<div class="col">
+				<input type="number" name="age" placeholder="18" required>
+			</div>
 			<div class="col">
 				Blood Group
 			</div>
@@ -103,27 +142,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col">
-				Username
-			</div>
-			<div class="col">
-				<input type="text" name="uname" placeholder="username ... " maxlength=25 required>
-			</div>
-			
-			<div class="col">
-				Password
-			</div>
-			<div class="col">
-				<input type="password" name="pass" placeholder="*******" maxlength=25 required>
-			</div>
-		</div>
 		<div class="row">	
-			<div class="col">
+			<div class="col" style='top: 40%'>
 				Address
 			</div>
 			<div class="col">
-				<textarea row=10 col=50 name="address" placeholder="Address ..." style="resize: none;" required></textarea>
+				<textarea rows=5 cols=50 name="address" placeholder="Address ..." style="resize: none;" required></textarea>
 			</div>
 		</div>
 		<div class="row">
@@ -136,7 +160,7 @@
 	
 
 
-	<form id="hos-reg-form" method="POST" onsubmit="validate(2)" style="display: none;" action="?action=signup">
+	<form id="hos-reg-form" method="POST" onsubmit="return validate(2)" style="display: none;" action="?action=signup">
 	<h1>Registration Form </h1>
 		<div class="row">
 			<div class="col">
@@ -199,7 +223,7 @@
 				Address
 			</div>
 			<div class="col">
-				<textarea row=10 col=50 name="address" placeholder="Address ..." style="resize: none;" required></textarea>
+				<textarea rows=5 cols=50 name="address" placeholder="Address ..." style="resize: none;" required></textarea>
 			</div>
 		</div>
 		<div class="row">

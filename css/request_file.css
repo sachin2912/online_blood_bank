@@ -5,29 +5,22 @@
     padding: 2%;
     display: inline-block;
     text-align: center;
-    
 }
 
 #filter-list button
 {
     width: 10%;
     padding: 1.2%;
+    border: solid 1px darkslategray;
 }
 #filter-list button:hover
 {
-    transform: scale(1);
+    transform: scale(1.15);
 }
 
-#filter-list button:active
-{
-    transform: scale(1.5);
-}
-#requests-users-details
-{
-    
-    left: 200px;
-}
+
 .zoom-class:hover
 {
-    transform: scale(1.2);
+    left: 20%;
+    transform: scale(1.1);
 }

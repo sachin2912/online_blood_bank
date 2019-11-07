@@ -62,7 +62,7 @@
   <link rel="stylesheet" type="text/css" href="css/request_file.css"/>
   <script src="js/request_file.js" type="text/javascript" defer></script>
   <script src='js/jquery-3.4.1.min.js'></script>
-  <script src='js/request_sendemail.js' defer></script>
+  
   <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
   <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
   <script src="https://js.api.here.com/v3/3.1/mapsjs-clustering.js" type="text/javascript" charset="utf-8"></script>

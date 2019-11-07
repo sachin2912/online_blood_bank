@@ -42,18 +42,28 @@ document.getElementById("requests-users-details").innerHTML = document.getElemen
 
 function sendemail(user_uname,h_name)
 {   
-    alert(user_uname);
-    $.ajax(
-        {
-            url:"?action=send_request_mail",
+    
+    $.post(
+        
+            "./make_request_mail.php",
+            data = {username: user_uname,
+                hospital_name: h_name},
+                function (data,status)
+                {
+                    if (status=="success")
+                    {    
+                        alert("Email Sent to ",data);
+                    }
+                    else
+                    {
+                        alert("unable to sent Email to ",data);
+                    }    
+                }
+
             
-            type: "POST",
-            data : {
-                username: user_uname,
-                hospital_name: h_name
-            },
             
             
-        }
-    )
+            
+        
+    );
 }

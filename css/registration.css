@@ -1,14 +1,23 @@
 #registration-form
 {
-    width: 80%;
+    width: 100%;
     text-align: center;
     background-color: red;
 }
-.row
+form .row
 {
     display: block;
+    width: 100%
 }
-.col
+form .col
 {
     display: inline-block;
+    width: 20%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 18px;
+}
+
+form .posneg
+{
+    display: inline-grid;
 }
