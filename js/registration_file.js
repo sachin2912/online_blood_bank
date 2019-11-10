@@ -85,7 +85,11 @@ function verify_otp()
             {
                 if (data == "verified")
                 {
+                    alert ("Email Verified");
                     document.getElementById("submit-btn").style.display = "block";
+
+                    document.getElementById("otp-value").type = "hidden";
+                    document.getElementById("otp-div").style.display = "none";
                 }
                 else 
                 {
@@ -99,6 +103,10 @@ function verify_otp()
 
 function send_otp()
 {
+    if (document.getElementById("otp-req-btn").innerHTML == "Resend OTP")
+    {
+        alert("IMPORTANT :  Old OTP is Invalid now !!!!!");
+    }
     var email_value = document.getElementById("user_email").value;
     $.post(
         "./send_otp.php",
@@ -108,10 +116,11 @@ function send_otp()
         },
         function ( response )
         {
-            console.log(response);
+            
             if (response == "success")
             {
                 document.getElementById("otp-div").style.display = "block";
+                document.getElementById("otp-req-btn").innerHTML = "Resend OTP";
             }
         }
     );

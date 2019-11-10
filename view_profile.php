@@ -1,8 +1,9 @@
 <head>
     <link rel="stylesheet" type="text/css" href="css/view_profile_file.css"/>
+    <script src="js/view_profile_file.js" type="text/javascript" defer></script>
 </head>
 <?php
-    if((isset($_SESSION["uname"]) && $_SESSION["uname"] == $_REQUEST["uname"] && $_SESSION["type"] == $_REQUEST["type"]) || $_SESSION["type"] == "ADMIN" )
+    if((isset($_SESSION["uname"]) && $_SESSION["uname"] == $_REQUEST["uname"] && $_SESSION["type"] == $_REQUEST["type"]) || $_SESSION["type"] == "admin" )
     {
         echo "<div id='profile-container'>";
         if ( $_REQUEST["type"] == "user" )
@@ -11,6 +12,8 @@
             $table = "user" ;
             $condition = " where uname='".$_REQUEST["uname"]."'";
             $cnt = " where uname='".$_REQUEST["uname"]."'";
+            $api_obj_1 = new api_1(new DB , "blood_request");
+            $req_result = $api_obj_1->get_details(" * ",$cnt);
         }
         else if ( $_REQUEST["type"] == "hospital" )
         {
@@ -22,8 +25,8 @@
 
         $api_obj = new api_1( new DB , $table ) ;
         $result = $api_obj->get_details( " * " , $condition );
-        $api_obj_1 = new api_1(new DB , "blood_request");
-        $req_result = $api_obj_1->get_details(" * ",$cnt);
+        
+
         if ( $_REQUEST["type"] == "user" )
         {
             $api_obj1 = new api_1(new DB , "blood_request");
@@ -75,12 +78,50 @@
             </tr>
             
             </table>";
-            
+            echo "<div id='request-user'>
+            <div id='req-btn'><b> Blood Request Details </b><div id='req-btn-float'> 
+            <button type='button' id='expand-req' onclick = 'expand_req()'>+</button></div></div>
+            <div id='req-details' style='display: none;'>";
+            if (isset($req_result))
+            {
+                echo "<table width=100% cellpading=30px>
+                <tr>
+                <td>
+                Request ID
+                </td>
+                <td>
+                Requested Hospital
+                </td>
+                <td>
+                Date and Time
+                </td>
+                <td>
+                Current Status
+                </td>
+                
+                </tr>";
+                for( $i=0 ; $i < count($req_result) ; $i++ )
+                {
+                    echo "<tr><td>".$req_result[$i]["r_id"].
+                    "</td><td>".$req_result[$i]["h_name"].
+                    "</td><td>".$req_result[$i]["time_date"].
+                    "</td><td>".$req_result[$i]["status"].
+                    "</td></tr>";
+                }
+                echo "</table>";
+
+            }
+            else if( !isset($req_result) )
+            {
+                echo "<div style='top: 40%; right: 45%; color: red;'>No requests Made yet</div>";
+            }
+            echo "</div>";
+            echo "</div>";            
 
         }
         else if ($_REQUEST["type"] == "hospital")
         {
-            echo "<div id='profile-container'>
+            echo"
             <table cellpadding='35px'>
             <tr>
             <td> 

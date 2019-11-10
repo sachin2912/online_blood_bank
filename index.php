@@ -9,6 +9,10 @@
     require("db.php");
     require("basic_requirements.php");
     include("header.php");
+    if (isset($_SESSION["type"]) && $_SESSION["type"] == "admin" && ( $_REQUEST["action"] == "view-all-users" || $_REQUEST["action"] == "view-all-hospitals"))
+    {
+        $act = "home";
+    }
     switch($act)
     {
         case 'home':
@@ -33,7 +37,7 @@
                     include("faq.php") ;
                     break ;
         case 'hospital-history':
-                    include("hos_history.php") ;
+                    include("view_history.php") ;
                     break ;
         case 'view-profile':
                     include("view_profile.php") ;
@@ -41,15 +45,19 @@
         case 'request-blood':
                     include("request.php") ;
                     break ;            
-        case 'send_request_mail' :
-                    echo "<script>
-                    alert('idhar');
-                    </script>";
-                    include ("make_request_mail.php");
-                    break;
+      
         case 'enquiry':
-                    include("enquiry.php");
+                    include("enquiry.php") ;
+                    break ;
+        case 'hospital-in-local':
+                    include("view_all_hospital.php") ;
+                    break ;
+        case 'view-all-user':
+                    include("admin_users.php");
                     break;
+        case 'view-all-hospital':
+                    include("admin_hospitals.php");
+                    break;                        
         default :
                 include("error.php");
         

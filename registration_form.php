@@ -7,15 +7,31 @@
 			
 		if ( isset( $_POST["fname"] ) )
 		{	
-			$table = "user";
-			$field = "fname,lname,uname,user_address,latitude,longitude,email,mobile_number,blood_group,age,weight";
-			$values = "'" . $_POST["fname"] . "'," . "'" . $_POST["lname"] . "'," . "'" . $_POST["uname"]. 
-			"'," . "'". $_POST["address"] . "'," . "'" . $latlong[0] . "'," . "'" . $latlong[1] . "'," .
-			"'" . $_POST["email"] . "'," . "'" . $_POST["mnumber"] . "'," .
-			"'" . $_POST["blood_group"] . "'," ."" . $_POST["age"] . ","."" . $_POST["weight"] . ""  ;
-			$field1="uname,password,status";
-			$values1="'" . $_POST["uname"] . "'," . "'" . $_POST["pass"] . "',0" ;
-			$table1 = "login_credentials" ;
+			$api_obj_3 = new api_1(new DB,"otp");
+			$cnt = "where otp='".$_POST["OTP_verify"]."' and email ='".$_POST["email"]."' and used = 1";
+			$res = $api_obj_3->verify_otp($cnt);
+			
+			if ($res > 0 )
+			{
+				$cnt_3 = " where email='".$_POST["email"]."'";
+    			$api_obj_3->delete_operation($cnt_3);
+				$table = "user";
+				$field = "fname,lname,uname,user_address,latitude,longitude,email,mobile_number,blood_group,age,weight";
+				$values = "'" . $_POST["fname"] . "'," . "'" . $_POST["lname"] . "'," . "'" . $_POST["uname"]. 
+				"'," . "'". $_POST["address"] . "'," . "'" . $latlong[0] . "'," . "'" . $latlong[1] . "'," .
+				"'" . $_POST["email"] . "'," . "'" . $_POST["mnumber"] . "'," .
+				"'" . $_POST["blood_group"] . "'," ."" . $_POST["age"] . ","."" . $_POST["weight"] . ""  ;
+				$field1="uname,password,status";
+				$values1="'" . $_POST["uname"] . "'," . "'" . $_POST["pass"] . "',0" ;
+				$table1 = "login_credentials" ;
+			}
+			else
+			{
+				echo "<script>
+				alert('OTP not Verified');
+				location.reload()
+				</script>";
+			}	
 		}	
 		else if ( isset( $_POST["hname"] ) )
 		{

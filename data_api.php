@@ -9,9 +9,9 @@ class api_1
         $this->table = $table;
     }
 
-    function check_login( $uname , $password ) 
+    function check_login( $uname , $password ,$cnt) 
     {
-        $sql = "select * from ".$this->table." where uname = '$uname' AND password ='$password'";
+        $sql = "select * from ".$this->table." where uname = '$uname' AND password ='$password'".$cnt;
         return $this->get_result_from_db( $sql , "S2" );
     }
     function check_user ($field,$uname)
@@ -37,6 +37,27 @@ class api_1
                 " SET used = 1 ".$cnt ;
         $this->get_result_from_db( $sql , "U" );
     }
+    function update_request( $value , $cnt )
+    {
+        $sql = "update ".$this->table." SET status = ".$value.
+        " where r_id = ".$cnt;
+        $this->get_result_from_db( $sql , "U");
+        
+    }
+
+    function update_verify($cnt)
+    {
+        $sql = "update ".$this->table." SET verified = 1 where ".$cnt;
+        $this->get_result_from_db( $sql , "U");
+    }
+
+    function check_admin( $uname )
+    {
+        $sql = "select * from login_credentials where uname ='".$uname."' and admin = 1";
+        
+        return $this->get_result_from_db( $sql , "S2");
+    }
+
     function insert_details( $fields , $values)
     {
         $sql = "insert into ".$this->table."(".$fields.") values(".$values.")";
@@ -50,6 +71,11 @@ class api_1
         return $this->get_result_from_db($sql,"S1");
     }
 
+    function delete_operation( $cnt )
+    {
+        $sql = "delete from ".$this->table.$cnt;
+        return $this->get_result_from_db($sql,"D");
+    }
 
     function get_result_from_db( $sql , $type ) 
     {

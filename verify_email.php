@@ -6,6 +6,7 @@
     $res = $api_obj->verify_otp($cnt);
     $cnt_1 = "where otp='".$_POST["otp"]."' and email ='".$_POST["email"]."'";
     $api_obj->update_otp($cnt_1);
+    
     if ($res > 0 )
     {
         echo "verified";

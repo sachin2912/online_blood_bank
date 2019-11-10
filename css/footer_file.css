@@ -1,13 +1,14 @@
 #footer-main-container
 {
     background-color: grey;
+    
     bottom: 0;
     position: relative;
     height: auto;
     overflow: auto;
     border: solid 2px black;
     width: 100%;
-    padding: 5%;    
+    padding: 20px;    
 }
 #right-container
 {

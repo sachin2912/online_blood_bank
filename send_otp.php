@@ -3,6 +3,8 @@
     require("data_api.php");
     $otp_generated = mt_rand(100000, 999999);
     $api_obj = new api_1(new DB,"otp");
+    $cnt_1 = " where email='".$_POST["email"]."'";
+    $api_obj->delete_operation($cnt_1);
     $fields = "otp,email";
     $values = "'$otp_generated','".$_POST["email"]."'";
     $api_obj->insert_details( $fields , $values );

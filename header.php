@@ -52,7 +52,7 @@
                         {          
                             echo"<div class='nav-member'>   
                                     <a href='?action=hospital-in-local'>
-                                        List of Hospital in Locality
+                                        List of Hospitals(Registered with us)
                                     </a>
                                 </div>
                                 <div class='nav-member'>   
@@ -70,27 +70,58 @@
                         else if ($_SESSION["type"]=="hospital")
                         {
                             echo"<div class='nav-member'>
-                                <a href='?action=request-blood'>
-                                    Request for Blood Donation
-                                </a>
-                                </div>
-                                <div class='nav-member'>
-                                    <a href='?action=hospital-history&uid=".$_SESSION['uname']."'>
-                                        View History
+                                    <a href='?action=hospital-history&uid=".$_SESSION["uname"]."'>
+                                        View Request History
                                     </a>
                                 </div>
-                                <div class='nav-member'>    
+                                <div class='nav-member'>   
+                                    <a href='?action=request-blood'>
+                                        Request Blood
+                                    </a>
+                                </div>
+                                
+                                <div class='nav-member'>   
                                     <a href='?action=view-profile&type=hospital&uname=".$_SESSION['uname']."'>
                                         ".$_SESSION["uname"]."
                                     </a>
                                 </div>
-                                <div class='nav-member'>    
-                                    <a href='?action=logout&type=hospital'>
+                                <div class='nav-member'>   
+                                    <a href='?action=logout&type=user'>
                                         Log Out
                                     </a>
-                                </div>    
+                                </div>   
                                 ";
-                        }        
+                        }
+                        else if ( $_SESSION["type"] == "admin" )
+                        {
+                            echo"<div class='nav-member'>
+                            <a href='?action=view-all-user'>
+                                View all Users
+                            </a>
+                            </div>
+                            <div class='nav-member'>
+                                <a href='?action=view-all-hospital'>
+                                    View All Hospitals
+                                </a>
+                            </div>
+                            <div class='nav-member'>    
+                                <div class='nav-member'>    
+                            <div class='nav-member'>    
+                                <a href='?action=view-profile&type=user&uname=".$_SESSION['uname']."'>
+                                    ".$_SESSION["uname"]."
+                                </a>
+                            </div>
+                                
+                            <div class='nav-member'>    
+                                <a href='?action=logout&type=hospital'>
+                                    Log Out
+                                </a>
+                            </div>    
+                                    
+                            ";
+                        }
+                        echo "</div>    
+                        ";        
                     }
                 ?>
                 
