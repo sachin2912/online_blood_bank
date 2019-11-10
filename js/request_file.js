@@ -40,6 +40,15 @@ ab_neg.onclick = function()
 document.getElementById("requests-users-details").innerHTML = document.getElementById("AB_neg_view").innerHTML;
 };
 
+function disp_snak(v)
+{
+    var x = document.getElementById("snackbar");
+    x.innerHTML="Email sent to " + v;
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
+
 function sendemail(user_uname,h_name)
 {   
     
@@ -52,18 +61,15 @@ function sendemail(user_uname,h_name)
                 {
                     if (status=="success")
                     {    
-                        alert("Email Sent to ",data);
+                        disp_snak(user_uname);
+                        document.getElementById(user_uname+"-request-btn").disabled = true;
+                        
                     }
                     else
                     {
-                        alert("unable to sent Email to ",data);
+                        alert("unable to sent Email");
                     }    
                 }
-
-            
-            
-            
-            
-        
+    
     );
 }

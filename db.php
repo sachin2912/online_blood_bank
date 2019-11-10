@@ -16,7 +16,13 @@ class DB {
     function execute($sql, $type)
     {
         if (($type=='I' || $type=='U' || $type=='D') && $sql !='') {
-            return $this->conn->query($sql);
+            if ( $this->conn->query($sql) == TRUE)
+            {
+                return "success";
+            }
+            else{
+                return "fail";
+            }
         } 
         else  
         {

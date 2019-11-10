@@ -14,7 +14,16 @@ class api_1
         $sql = "select * from ".$this->table." where uname = '$uname' AND password ='$password'";
         return $this->get_result_from_db( $sql , "S2" );
     }
-    
+    function check_user ($field,$uname)
+    {
+        $sql = "select * from ".$this->table." where $field = '$uname'";
+        return $this->get_result_from_db($sql,"S2");
+    }
+    function verify_otp($cnt)
+    {
+        $sql = "select * from ".$this->table." ".$cnt;
+        return $this->get_result_from_db($sql,"S2");
+    }
     function update_status( $uname , $v )
     {
         $sql="  update ".$this->table.
@@ -22,11 +31,17 @@ class api_1
                 " where uname = '$uname'";
         $this->get_result_from_db( $sql , "U" );        
     }
-    
+    function update_otp( $cnt )
+    {
+        $sql="  update ".$this->table.
+                " SET used = 1 ".$cnt ;
+        $this->get_result_from_db( $sql , "U" );
+    }
     function insert_details( $fields , $values)
     {
         $sql = "insert into ".$this->table."(".$fields.") values(".$values.")";
-        $this->get_result_from_db($sql,"I");
+        
+        return $this->get_result_from_db($sql,"I");
     }
 
     function get_details($amt,$condition)

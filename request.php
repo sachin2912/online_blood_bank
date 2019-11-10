@@ -23,13 +23,14 @@
         $users[$i]["blood_group"]."</td><td>".
         $users[$i]["user_address"]."</td><td>".$users[$i]["email"].
         "</td><td>".$users[$i]["mobile_number"]."</td></tr>
-        <tr><td colspan='6' align='center'><button id='".$users[$i]["uname"]."-request-btn' onclick='sendemail($arg)' >Request for Blood
+        <tr><td colspan='6' align='center'><button class='request-btn' id='".$users[$i]["uname"]."-request-btn' onclick='sendemail($arg)' >Request for Blood
         </button></td></tr></table></td></tr>";
       }
     }
 
     $result_table.= "</table>";
-    
+
+    echo "<div id='snackbar'></div>";
     if ( $count == 0 )
     {
       return "No Users Found!!!!!!!!";

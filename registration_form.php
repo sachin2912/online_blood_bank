@@ -1,44 +1,83 @@
 <?php
 	if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
 	{
+		$db_obj=new DB;
+		$latlong = array();
+		$latlong = get_location($_POST["address"]);
+			
 		if ( isset( $_POST["fname"] ) )
 		{	
-			$db_obj=new DB;
-			$latlong = array();
-			$latlong = get_location($_POST["address"]);
-			$api_obj = new api_1($db_obj,"user");
+			$table = "user";
 			$field = "fname,lname,uname,user_address,latitude,longitude,email,mobile_number,blood_group,age,weight";
 			$values = "'" . $_POST["fname"] . "'," . "'" . $_POST["lname"] . "'," . "'" . $_POST["uname"]. 
 			"'," . "'". $_POST["address"] . "'," . "'" . $latlong[0] . "'," . "'" . $latlong[1] . "'," .
 			"'" . $_POST["email"] . "'," . "'" . $_POST["mnumber"] . "'," .
-			"'" . $_POST["blood_group"] . "'," ."'" . $_POST["age"] . "',"."'" . $_POST["weight"] . "'"  ;
-			$api_obj->insert_details($field,$values);
-			$api_obj1 = new api_1($db_obj,"logincredentails");
+			"'" . $_POST["blood_group"] . "'," ."" . $_POST["age"] . ","."" . $_POST["weight"] . ""  ;
 			$field1="uname,password,status";
 			$values1="'" . $_POST["uname"] . "'," . "'" . $_POST["pass"] . "',0" ;
-			$api_obj1->insert_details($field1,$values1);
+			$table1 = "login_credentials" ;
+		}	
+		else if ( isset( $_POST["hname"] ) )
+		{
+			$table = "hospital";
+			$field = "h_name,poc_name,address,latitude,longitude,email,phone_number,website,reg_no";
+			$values = "'" . $_POST["hname"] . "'," . "'" . $_POST["posname"] . "'," . 
+			 "'". $_POST["address"] . "'," . "'" . $latlong[0] . "'," . "'" . $latlong[1] . "'," .
+			"'" . $_POST["email"] . "'," . "'" . $_POST["mnumber"] . "','" .$_POST["website"]."','".
+			$_POST["reg_no"]."'";
+			$field1="uname,password,status";
+			$values1 = "'" . $_POST["hname"] . "'," . "'" . $_POST["pass"] . "',0" ;
+			$table1 = "hospital_login_credentials" ;
 
 		}
+		$api_obj = new api_1($db_obj,$table);
+		$resp = $api_obj->insert_details($field,$values);
+		
+		$api_obj1 = new api_1($db_obj,$table1);
+		$resp1 = $api_obj1->insert_details($field1,$values1);
+		if ($resp == "success" && $resp1 == "success")
+		{
+			if (isset($_POST["uname"]))
+			{
+				$_SESSION["uname"] = $_POST["uname"];
+				$_SESSION["type"] = "user";
+			}
+			else if (isset($_POST["hname"]))
+			{
+				$_SESSION["uname"] = $_POST["hname"];
+				$_SESSION["type"] = "hospital";
+			}
+			redirect_func();		
+		}
+		else
+		{
+			echo "<script>
+			alert('Failed could not Register');
+			</script>";
+		}
+
 	}
 ?>
 <head>
 	<link rel="stylesheet" type="text/css" href="css/registration.css"/>
+	<script src="js/registration_file.js" type="text/javascript" defer></script>
+	<script src='js/jquery-3.4.1.min.js'></script>
 
 </head>
 <div id="button-change" style="width: 100%;
     display: inline-block;
     text-align: center;">    
-	<button  onclick=form_change(1)>
+	<button  id="user-btn-reg" onclick=form_change(1)>
 		User
 	</button>
-	<button onclick=form_change(2)>
+	<button id="hospital-btn-reg" onclick=form_change(2)>
 		Hospital
 	</button>
 </div>
 <div id="registraion-form" style="text-align: center;">
 	
 	<form id="user-reg-form" onsubmit="validate(1)" method="POST" action="?action=signup">
-		<h1>Registration Form </h1>
+		<h1>User Registration Form </h1>
 		<div class="row">
 			<div class="col">
 				First Name
@@ -56,10 +95,10 @@
 
 		<div class="row">
 			<div class="col">
-				Email
+				Weight
 			</div>
 			<div class="col">
-				<input type="email" name="email" placeholder="you@example.com" required>
+				<input type="number" id="weight" name="weight" placeholder="50 (in KGs)" required>
 			</div>
 			<div class="col">
 				Contact Number
@@ -74,27 +113,38 @@
 				Username
 			</div>
 			<div class="col">
-				<input type="text" name="uname" placeholder="username ... " maxlength=25 required>
+				
+				<input type="text" id="user_username" name="uname" placeholder="username ... " onchange="check_username(this.value)" maxlength=25 required>
 			</div>
 			<div class="col">
-				Weight
+				Email
 			</div>
 			<div class="col">
-				<input type="number" name="weight" placeholder="50" required>(in KGs)
+				<input type="email" id="user_email" name="email" onchange="check_email(this.value)" placeholder="you@example.com" required>
 			</div>
+			
+		</div>
+		<div class="row">
+			<div class="col" >
+				<h5 id="user_exist" style="display: none;"></h5>
+			</div>
+			<div class="col" id="email_exist" style='display: none;'>
+				
+			</div>
+			
 		</div>
 		<div class="row">	
 			<div class="col">
 				Password
 			</div>
 			<div class="col">
-				<input type="password" name="pass" placeholder="*******" maxlength=25 required>
+				<input type="password" id="pass" name="pass" placeholder="*******" maxlength=25 required>
 			</div>
 			<div class="col">
 				Confirm Password
 			</div>
 			<div class="col">
-				<input type="password" name="confirm_pass" placeholder="*******" maxlength=25 required>
+				<input type="password" id="confirm_pass" name="confirm_pass" placeholder="*******" maxlength=25 required>
 			</div>
 		</div>
 		
@@ -150,9 +200,23 @@
 				<textarea rows=5 cols=50 name="address" placeholder="Address ..." style="resize: none;" required></textarea>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" id="otp-div" style="display: none;">
 			<div class="col">
-				<input type="submit" value="Register"> 
+				Enter OTP : 
+			</div>
+			<div class="col">
+				<input type="text" id="otp-value" placeholder="OTP" name="OTP_verify" required>
+
+			</div>
+			<div class="col">
+				<button  type="button" id="otp-btn" onclick="verify_otp()">
+				 Verify
+				 </button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col" id="submit-btn" style="display: none;">
+				<input type="submit"  value="Register"> 
 			</div>
 		</div>
 	</form>
@@ -161,7 +225,7 @@
 
 
 	<form id="hos-reg-form" method="POST" onsubmit="return validate(2)" style="display: none;" action="?action=signup">
-	<h1>Registration Form </h1>
+	<h1>Hospital Registration Form </h1>
 		<div class="row">
 			<div class="col">
 				Name of Hospital
@@ -209,13 +273,13 @@
 				Password
 			</div>
 			<div class="col">
-				<input type="password" name="pass" placeholder="*******" maxlength=25 required>
+				<input type="password" id="hpass" name="pass" placeholder="*******" maxlength=25 required>
 			</div>
 			<div class="col">
 				Confirm Password
 			</div>
 			<div class="col">
-				<input type="password" name="confirm_pass" placeholder="*******" maxlength=25 required>
+				<input type="password" id="hconfirm_pass" name="confirm_pass" placeholder="*******" maxlength=25 required>
 			</div>
 		</div>
 		<div class="row">	
@@ -233,18 +297,4 @@
 		</div>
 	</form>		
 </div>	
-	<script>
-	function form_change(v)
-	{	
-		if (v == 1)
-		{
-			document.getElementById("hos-reg-form").style.display = "none";
-			document.getElementById("user-reg-form").style.display="block"; 
-		}
-		else if (v == 2)
-		{
-			document.getElementById("hos-reg-form").style.display = "block";
-			document.getElementById("user-reg-form").style.display="none"; 
-		} 
-	}
-	</script>
+	

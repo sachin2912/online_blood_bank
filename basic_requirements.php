@@ -34,7 +34,6 @@
 			$i++ ;
 			
         }
-        echo $Latitude."  -> ".$Longitude;
         return array($Latitude,$Longitude);
         
 	}

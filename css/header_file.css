@@ -99,7 +99,8 @@ button
 .form-container {
   max-width: 300px;
   padding: 10px;
-  background-image: url("img/login_1.gif");
+  background-image: url("../img/login_1.gif");
+  color: white;
 }
 
 /* Full-width input fields */
