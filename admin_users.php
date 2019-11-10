@@ -5,7 +5,7 @@
 </head>
 <?php
     $api_obj = new api_1(new DB,"user");
-    $result = $api_obj->get_details("uname,email"," where uname <> '".$_SESSION["uname"]."'");
+    $result = $api_obj->get_details("uname,email,admin"," where uname <> '".$_SESSION["uname"]."'");
     echo "<div id='admin-user-details'>";
     echo "<h1 style='color: blue;'> ALL USERS DETAILS </h1>";
     if(isset($result))
@@ -28,8 +28,16 @@
             echo "<tr><td><a href='?action=view-profile&type=user&uname=".$result[$i]["uname"]
             ."'>".$result[$i]["uname"]."</a></td><td>".
             $result[$i]["email"]."</td><td>".'<button type="button" onclick="delete_user('.$uname_arg.')">
-            Delete User </button></td></tr>';
-                
+            Delete User </button></td>';
+            if ($result[$i]["admin"] == 0)
+            {
+                echo '<td><button type="button" onclick="make_admin('.$uname_arg.')">Make Admin </button> </td>';
+            }
+            else
+            {
+                echo "<td> Is a Admin too </td>"; 
+            }
+            echo "</tr>";    
         }
         echo "</table>";
     }

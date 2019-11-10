@@ -51,6 +51,12 @@ class api_1
         $this->get_result_from_db( $sql , "U");
     }
 
+    function make_admin($cnt)
+    {
+        $sql = "update ".$this->table." SET admin = 1 where ".$cnt;
+        return $this->get_result_from_db( $sql , "U");
+    }
+
     function check_admin( $uname )
     {
         $sql = "select * from login_credentials where uname ='".$uname."' and admin = 1";

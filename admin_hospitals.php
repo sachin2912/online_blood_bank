@@ -18,9 +18,7 @@
                     <td>
                     <h2>Latitude and Longitude<h2>
                     </td>
-                    <td>
-                    <h2>View Profile</h2>
-                    </td>
+                    
                     <td>
                     <h2>Address</h2>
                     </td>
@@ -36,8 +34,8 @@
             $result[$i]["latitude"]." and ".$result[$i]["longitude"]."</td>"."<td>".$result[$i]["address"]."</td>";
             if($result[$i]["verified"] == 1)
             {
-                echo '<td colspan=2><button type="button" onclick="verify('.$uname_arg.',2)">
-                Delete User </button></td></tr>';
+                echo '<td colspan=2><button type="button" onclick="verify('.$uname_arg.',2)">'.
+                "Delete Hospital's Details </button></td></tr>";
             }    
             else
             {
