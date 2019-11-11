@@ -10,8 +10,8 @@
     echo "<h1 style='color: blue;'> ALL HOSPITALS DETAILS </h1>";
     if(isset($result))
     {
-        echo "<table width=100% cellpading=20px align='center'>
-                    <tr>
+        echo "<table width=100% cellpading=15px align='center'>
+                    <tr style='transform: none;'>
                     <td>
                     <h2>Hospital Name</h2>
                     </td>
@@ -42,7 +42,8 @@
                 echo '<td><button type="button" onclick="verify('.$uname_arg.',1)">
                 Verify Hospital </button></td>'.'<td><button type="button" onclick="verify('.$uname_arg.',2)">
                 Reject Hospital </button></td></tr>';
-            }    
+            }
+               
         }
         echo "</table>";
     }

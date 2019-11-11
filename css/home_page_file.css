@@ -18,32 +18,9 @@
 }
 
 /* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
+
 
 /* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
 /* Caption text */
 .text {
   color: #f2f2f2;
@@ -97,25 +74,45 @@
   from {opacity: .4}
   to {opacity: 1}
 }
-
+.section
+{
+  width: 100%;
+  text-align: center;
+  height: auto;
+  margin: auto;
+  overflow: auto;
+  padding: 30px;
+}
 .left-section
 {
   float: left;
   width: 40%;
-  padding-left: 25px;
+  padding-left: 10px;
   text-align: center;
 
 }
 .right-section
 {
   float: right;
-  width: 50%;
+  width: 40%;
   padding-right: 5px;
   padding-top: 5px;
   text-align: center;
   color: tomato;
+  overflow: auto;
 }
 p
 {
   font-family: cursive;
+}
+.section a
+{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: darkslategray;
+}
+
+.article_news:hover
+{
+  transform: skewY(5deg);
+  
 }

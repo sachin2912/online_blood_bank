@@ -26,6 +26,10 @@ tr
 {
     height: 60px;
 }
+tr:hover
+{
+    transform: scale(1.06);
+}
 td
 {
     width: 20%;

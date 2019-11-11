@@ -54,7 +54,7 @@ function sendemail(user_uname,h_name)
     
     $.post(
         
-            "./make_request_mail.php",
+            "./ajax_calls/make_request_mail.php",
             data = {username: user_uname,
                 hospital_name: h_name},
                 function (data,status)

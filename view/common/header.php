@@ -11,7 +11,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" type="text/css" href="css/header_file.css"/>
         
-        <script src="js/header_file.js" type="text/javascript" defer></script>    
+        <script src="js/header_file.js" type="text/javascript" defer></script>  
+            
+         
     </head>
     <body>
         <div id="top-main-container" class="topcontainer">
@@ -104,8 +106,7 @@
                                     View All Hospitals
                                 </a>
                             </div>
-                            <div class='nav-member'>    
-                                <div class='nav-member'>    
+                                
                             <div class='nav-member'>    
                                 <a href='?action=view-profile&type=user&uname=".$_SESSION['uname']."'>
                                     ".$_SESSION["uname"]."
@@ -120,8 +121,7 @@
                                     
                             ";
                         }
-                        echo "</div>    
-                        ";        
+                              
                     }
                 ?>
                 

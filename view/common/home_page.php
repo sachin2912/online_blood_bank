@@ -6,8 +6,7 @@
     
     <div class="slideshow-container">
 
-    <!-- Full-width images with number and caption text -->
-        <div class="mySlides fade">
+       <div class="mySlides fade">
             <img src="img/4.png" width=100%>
             <div class="text">Our Initiative</div>
         </div>
@@ -22,9 +21,6 @@
             
         </div>
 
-        <!-- Next and previous buttons -->
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
     <br>
 
@@ -51,6 +47,16 @@ function showSlides() {
   if (slideIndex > slides.length) {slideIndex = 1}
   slides[slideIndex-1].style.display = "block";
   setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+function currentSlide(v)
+{
+    var slide = document.getElementsByClassName("mySlides");
+    for (i=0;i<slide.length;i++)
+    {
+        slide[i].style.display = "none";
+
+    }
+    slide[v-1].style.display = "block";
 }
 </script>
 
@@ -86,3 +92,35 @@ function showSlides() {
         </p>
     </div>
 </div>
+
+<div id="section-3" class="section">
+    <h2> Why Is Such Portal Required ? </h2>
+    <div id="left-section-3" class="left-section" >
+        <img src="img/section_3.jpg">
+    </div>
+    <div class="right-section">
+        <h2> Some article headlines by Media</h2>
+        <div id="article_1" class="article_news">
+            <a href="https://timesofindia.indiatimes.com/city/mumbai/blood-banks-waste-2-8m-units-in-5-yrs/articleshow/58333394.cms" target="_blank">
+                <h3>
+                    " Blood banks waste 2.8 million units in 5 years " 
+                </h3>
+            </a>
+        </div>
+        <div id="article_2" class="article_news">
+            <a href="https://www.indiatoday.in/fyi/story/blood-banks-india-wastage-blood-donors-973478-2017-04-25" target="_blank">
+                <h3>
+                " Bloodbath: Do you know how much blood India is wasting every day? "
+                </h3>
+                <h5> In a country that doesn"t believe in donating blood, 
+                    Indian blood banks are wasting a tremendous amount of blood every single day.</h5>
+            </a>
+        </div>
+        <div id='article-3' class = 'article_news'>
+            <a href='https://timesofindia.indiatimes.com/india/world-blood-donor-day-2019-india-faces-shortage-of-1-95mn-units-of-blood/articleshow/69785128.cms' target='_blank'>
+            <h3>"World Blood Donor Day 2019: India faces shortage of 1.95mn units of Blood"</h3>
+            </a>
+        </div>    
+
+    </div>
+</div>                        

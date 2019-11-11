@@ -1,6 +1,6 @@
 <?php
-    require("db.php");
-    require("data_api.php");
+    require("../model/db.php");
+    require("../model/data_api.php");
     $api_obj = new api_1(new DB,"hospital");
     if($_POST["what_to_do"] == 2)
     {

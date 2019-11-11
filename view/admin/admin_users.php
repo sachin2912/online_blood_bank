@@ -10,8 +10,8 @@
     echo "<h1 style='color: blue;'> ALL USERS DETAILS </h1>";
     if(isset($result))
     {
-        echo "<table  cellpading=30px align='center'>
-                    <tr>
+        echo "<table  cellpading=20px align='center'>
+                    <tr style='transform: none;'>
                     <td>
                     <h2>User Name</h2>
                     </td>

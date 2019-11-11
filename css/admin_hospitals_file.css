@@ -22,9 +22,15 @@ table
     margin: auto;
     
 }
+
 tr
 {
     height: 60px;
+}
+tr:hover
+{
+    transform: scale(1.06);
+    
 }
 td
 {

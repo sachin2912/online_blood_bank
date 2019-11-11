@@ -5,10 +5,10 @@
     }
     $act = isset( $_REQUEST["action"] ) ? $_REQUEST["action"] : "home";
     session_start();
-    require("data_api.php");
-    require("db.php");
+    require("model/data_api.php");
+    require("model/db.php");
     require("basic_requirements.php");
-    include("header.php");
+    include("view/common/header.php");
     if (isset($_SESSION["type"]) && $_SESSION["type"] == "admin" && ( $_REQUEST["action"] == "view-all-users" || $_REQUEST["action"] == "view-all-hospitals"))
     {
         $act = "home";
@@ -16,52 +16,52 @@
     switch($act)
     {
         case 'home':
-                    include("home_page.php") ;
+                    include("view/common/home_page.php") ;
                     break ;
         case 'about-us':
-                    include("about_us.php") ;
+                    include("view/common/about_us.php") ;
                     break ;
         case 'team':
                     include("team_info.php") ;
                     break;
         case 'login':
-                    include("login.php") ;
+                    include("view/common/login.php") ;
                     break;
         case 'signup':
-                    include("registration_form.php") ;
+                    include("view/common/registration_form.php") ;
                     break;
         case 'logout':
-                    include("logout.php") ;
+                    include("view/common/logout.php") ;
                     break ;
         case 'faq':
-                    include("faq.php") ;
+                    include("view/common/faq.php") ;
                     break ;
         case 'hospital-history':
-                    include("view_history.php") ;
+                    include("view/hospital/view_history.php") ;
                     break ;
         case 'view-profile':
-                    include("view_profile.php") ;
+                    include("view/common/view_profile.php") ;
                     break ;
         case 'request-blood':
-                    include("request.php") ;
+                    include("view/hospital/request.php") ;
                     break ;            
       
         case 'enquiry':
                     include("enquiry.php") ;
                     break ;
         case 'hospital-in-local':
-                    include("view_all_hospital.php") ;
+                    include("view/user/view_all_hospital.php") ;
                     break ;
         case 'view-all-user':
-                    include("admin_users.php");
+                    include("view/admin/admin_users.php");
                     break;
         case 'view-all-hospital':
-                    include("admin_hospitals.php");
+                    include("view/admin/admin_hospitals.php");
                     break;                        
         default :
                 include("error.php");
         
     }
-    include("footer.php") ;
+    include("view/common/footer.php") ;
    
 ?>

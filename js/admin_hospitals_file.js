@@ -1,7 +1,7 @@
 function verify(uname,what_to_do)
 {
     $.post(
-        "./verify_hos.php",
+        "./ajax_calls/verify_hos.php",
         data = {
             username: uname,
             what_to_do : what_to_do,

@@ -1,12 +1,13 @@
 function delete_user(uname)
 {
     $.post(
-        "./delete_user.php",
+        "./ajax_calls/delete_user.php",
         data = {
             username: uname,
         },
         function (status)
         {
+            alert(status);
             if ( status == "success" )
             {
                 alert("user with username : "+uname+" is deleted !!!");
@@ -19,7 +20,7 @@ function delete_user(uname)
 function make_admin(uname)
 {
     $.post(
-        "./make_admin.php",
+        "./ajax_calls/make_admin.php",
         data = {
             username: uname,
         },

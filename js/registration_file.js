@@ -48,7 +48,7 @@ function validate(v)
 function check_username(value)
 {
     $.post(
-        "./check_username.php",
+        "./ajax_calls/check_username.php",
         data = {username: value},
             function (data)
             {
@@ -74,7 +74,7 @@ function verify_otp()
     var email_value = document.getElementById("user_email").value;
     var otp_value = document.getElementById("otp-value").value;
     $.post(
-        "./verify_email.php",
+        "./ajax_calls/verify_email.php",
         data = {
             otp: otp_value,
             email: email_value,
@@ -109,7 +109,7 @@ function send_otp()
     }
     var email_value = document.getElementById("user_email").value;
     $.post(
-        "./send_otp.php",
+        "./ajax_calls/send_otp.php",
         data = 
         {
             email: email_value,
@@ -129,7 +129,7 @@ function send_otp()
 function check_email(value)
 {
     $.post(
-        "./check_email.php",
+        "./ajax_calls/check_email.php",
         data = {
             email: value,
         },

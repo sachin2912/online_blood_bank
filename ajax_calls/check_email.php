@@ -1,6 +1,6 @@
 <?php
-require("data_api.php");
-require("db.php");
+require("../model/data_api.php");
+require("../model/db.php");
 if ( isset($_POST["email"]) )
 {
     $api_obj = new api_1(new DB,"user");
