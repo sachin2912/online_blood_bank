@@ -20,8 +20,9 @@ class DB {
             {
                 return "success";
             }
-            else{
-                return "fail";
+            else
+            {
+                return "error: ".$this->conn->error;
             }
         } 
         else  

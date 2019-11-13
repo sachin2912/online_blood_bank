@@ -9,7 +9,7 @@
     require("model/db.php");
     require("basic_requirements.php");
     include("view/common/header.php");
-    if (isset($_SESSION["type"]) && $_SESSION["type"] == "admin" && ( $_REQUEST["action"] == "view-all-users" || $_REQUEST["action"] == "view-all-hospitals"))
+    if (isset($_SESSION["type"]) && $_SESSION["type"] != "admin" && ( $_REQUEST["action"] == "view-all-users" || $_REQUEST["action"] == "view-all-hospitals" || $_REQUEST["action"] == "user-complain" ))
     {
         $act = "home";
     }
@@ -57,7 +57,10 @@
                     break;
         case 'view-all-hospital':
                     include("view/admin/admin_hospitals.php");
-                    break;                        
+                    break; 
+        case 'user-complain':
+                    include("view/admin/admin_complain.php");
+                    break;                                   
         default :
                 include("error.php");
         

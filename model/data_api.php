@@ -45,6 +45,14 @@ class api_1
         
     }
 
+    function update_action( $value , $cnt , $admin_uname )
+    {
+        $sql = "update ".$this->table." SET action = ".$value.
+        ",admin_uname = ". $admin_uname ." where c_id = ".$cnt;
+        echo "$sql";
+        $this->get_result_from_db( $sql , "U");
+    }
+
     function update_verify($cnt)
     {
         $sql = "update ".$this->table." SET verified = 1 where ".$cnt;

@@ -22,14 +22,14 @@
 				"'" . $_POST["email"] . "'," . "'" . $_POST["mnumber"] . "'," .
 				"'" . $_POST["blood_group"] . "'," ."" . $_POST["age"] . ","."" . $_POST["weight"] . ""  ;
 				$field1="uname,password,status";
-				$values1="'" . $_POST["uname"] . "'," . "'" . $_POST["pass"] . "',0" ;
+				$values1="'" . $_POST["uname"] . "'," . "'" . $_POST["pass"] . "',1" ;
 				$table1 = "login_credentials" ;
 			}
 			else
 			{
 				echo "<script>
 				alert('OTP not Verified');
-				location.reload()
+				
 				</script>";
 			}	
 		}	
@@ -42,7 +42,7 @@
 			"'" . $_POST["email"] . "'," . "'" . $_POST["mnumber"] . "','" .$_POST["website"]."','".
 			$_POST["reg_no"]."'";
 			$field1="uname,password,status";
-			$values1 = "'" . $_POST["hname"] . "'," . "'" . $_POST["pass"] . "',0" ;
+			$values1 = "'" . $_POST["hname"] . "'," . "'" . $_POST["pass"] . "',1" ;
 			$table1 = "hospital_login_credentials" ;
 
 		}
@@ -51,6 +51,8 @@
 		
 		$api_obj1 = new api_1($db_obj,$table1);
 		$resp1 = $api_obj1->insert_details($field1,$values1);
+		echo $resp1;
+		echo $resp;
 		if ($resp == "success" && $resp1 == "success")
 		{
 			if (isset($_POST["uname"]))
@@ -71,7 +73,7 @@
 			alert('Failed could not Register');
 			</script>";
 		}
-
+	
 	}
 ?>
 <head>

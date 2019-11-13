@@ -112,7 +112,11 @@
                                     ".$_SESSION["uname"]."
                                 </a>
                             </div>
-                                
+                            <div class='nav-member'>
+                                <a href='?action=user-complain'>
+                                    View Complain 
+                                </a>
+                            </div>        
                             <div class='nav-member'>    
                                 <a href='?action=logout&type=hospital'>
                                     Log Out
