@@ -17,6 +17,10 @@ table
     margin: auto;
     
 }
+#profile-container a
+{
+    color: crimson;
+}
 td
 {
     width: 20%;

@@ -1,0 +1,32 @@
+
+<head>
+	<link rel="stylesheet" type="text/css" href="css/faq_file.css">
+</head>
+
+	<div class="faq">
+		<h2>Frequently Asked Questions</h2>
+		<h3 class="Question">Who can Donate blood?</h3>
+		<div class="answer">Any donor, who is healthy, fit and not suffering from any transmittable diseases can donate blood.
+			 Donor must be 18 -60 years age and having a minimum weight of 50Kg can donate blood
+			. A donor can again donate blood after 3 months of your last donation of blood.</div>
+
+		<h3 class="Question">When is complain against a user registered?</h3>
+		<div class="answer">A hospital can register any complain against a user , if 
+			in a user's blood sample they found any thing that is not good for the blood reciever
+			 or any health problems in his sample.</div>
+
+		<h3 class="Question">How long does a request verification takes?</h3>
+		<div class="answer">It depend on the hospital to respond to the blood sample 
+			.
+		 Rest be assured and you may call the hospital .</div>
+	</div>
+	<script src="js\jquery-3.4.1.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$(".faq h3").on("click", function(){
+				$(this)
+					.next()
+					.slideToggle();
+			});
+		});
+	</script>

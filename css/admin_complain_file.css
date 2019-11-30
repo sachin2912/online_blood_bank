@@ -1,9 +1,19 @@
+#admin-hospital-details
+{
+  paddding-bottom: 60px;
+}
+#admin-hospital-details a
+{
+  color: brown;
+}
+
 table
 {
     width: 100%;
 }
 td{
     text-align: center;
+    
 }
 
 

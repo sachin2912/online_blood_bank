@@ -12,7 +12,6 @@ class DB {
             die("Error: Failed to connect with the database");
         }
     }
-
     function execute($sql, $type)
     {
         if (($type=='I' || $type=='U' || $type=='D') && $sql !='') {
@@ -31,16 +30,13 @@ class DB {
             if ($type=="S1")
             {
                 if ($this->res->num_rows>0)
-
                 {   
-                    
                     $data = [];
                     while($row = $this->res->fetch_assoc()) 
                     {
                         $data[] = $row;
                         
                     }
-                    
                     return $data;
                 }
             }

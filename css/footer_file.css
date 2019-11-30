@@ -8,7 +8,7 @@
     overflow: auto;
     border: solid 2px black;
     width: 100%;
-    padding: 20px;    
+    padding: 30px;    
 }
 #right-container
 {
@@ -31,10 +31,22 @@ a
 .nav-member-f
 {
     display: block;
+    padding: 10px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .nav-member-f a:link
 {
     color: greenyellow;
+}
+
+#follow-us
+{
+    float: left;
+}
+#follow-us-1
+{
+    float: right;
+    
+    display: block;
 }

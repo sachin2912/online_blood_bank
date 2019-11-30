@@ -62,8 +62,10 @@
 			}
 			else if (isset($_POST["hname"]))
 			{
-				$_SESSION["uname"] = $_POST["hname"];
-				$_SESSION["type"] = "hospital";
+				echo "<script>
+				alert('Your Hospital is Registered but it needs to be verfied .\n It may take 24 hrs to get verfied . Thanks
+				for registering with us ');
+				</script>";
 			}
 			redirect_func();		
 		}
@@ -73,7 +75,7 @@
 			alert('Failed could not Register');
 			</script>";
 		}
-	
+		 
 	}
 ?>
 <head>
@@ -94,20 +96,20 @@
 </div>
 <div id="registraion-form" style="text-align: center;">
 	
-	<form id="user-reg-form" onsubmit="validate(1)" method="POST" action="?action=signup">
+	<form id="user-reg-form" onsubmit="return validate(1)" method="POST" action="?action=signup">
 		<h1>User Registration Form </h1>
 		<div class="row">
 			<div class="col">
 				First Name
 			</div>
 			<div class="col">
-				<input type="text" name="fname" placeholder="vivek kumar" maxlenght=25 required>
+				<input type="text" name="fname" placeholder="vivek kumar" maxlength=25 required>
 			</div>
 			<div class="col">
 				Last Name
 			</div>
 			<div class="col">
-				<input type="text" name="lname" placeholder="singh" maxlenght=25 required>
+				<input type="text" name="lname" placeholder="singh" maxlength=25 required>
 			</div>
 		</div>
 
@@ -122,7 +124,7 @@
 				Contact Number
 			</div>
 			<div class="col">
-				<input type="text"  name="mnumber" placeholder="9632587410" required>
+				<input type="text"  name="mnumber" placeholder="9632587410" minlength=10 required>
 			</div>
 		</div>
 		
@@ -249,13 +251,13 @@
 				Name of Hospital
 			</div>
 			<div class="col">
-				<input type="text" name="hname" placeholder="Govt Hospital" maxlenght=25 required>
+				<input type="text" name="hname" placeholder="Govt Hospital" maxlength=25 required>
 			</div>
 			<div class="col">
 				Person's Name (as in Point of Contact)
 			</div>
 			<div class="col">
-				<input type="text" name="posname" placeholder="Ram singh" maxlenght=25 required>
+				<input type="text" name="posname" placeholder="Ram singh" maxlength=25 required>
 			</div>
 		</div>
 		<div class="row">
@@ -277,7 +279,7 @@
 				Website
 			</div>
 			<div class="col">
-				<input type="email" name="website" placeholder="www.example.com" required>
+				<input type="text" id="h_website" name="website" placeholder="www.example.com" required>
 			</div>
 			<div class="col">
 				Registration Number

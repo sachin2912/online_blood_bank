@@ -9,20 +9,11 @@
                     Know us better
                 </h2>    
                 <div class="nav-member-f">
-                    <a href="?action=about-us">
-                        About us
-                    </a>
-                </div>
-                <div class="nav-member-f">
                     <a href="?action=team">
                         Team
                     </a>
                 </div>
-                <div class="nav-member-f">
-                    <a href="?action=enquiry-form">
-                        Have any query
-                    </a>
-                </div>
+               
                 <div class="nav-member-f">
                     <a href="?action=faq">
                         FAQ
@@ -44,26 +35,20 @@
                     </a>
                 </div>
                 <div class="nav-member-f">
-                    <a href="?action=sign">
-                        
-                    </a>
+                    <a href='?action=about-us'>
+                        About Us
+                    </a>    
                 </div>
-                
-                <div class="nav-member-f">
-                    <a href="#">
-                        ABC
-                    </a>
-                </div>
-                <div class="nav-member-f">
-                    <a href="#">
-                        ABC
-                    </a>
-                </div>
-                <div class="nav-member-f">
-                    <a href="#">
-                        ABC
-                    </a>
-                </div>
+                <?php 
+                if ( !isset( $_SESSION["uname"] ) )
+                {
+                    echo "<div class='nav-member-f'>
+                        <a href='?action=signup'>
+                            Sign Up
+                        </a>    
+                    </div>";
+                }    
+                ?>
             </div>
         </div>
         

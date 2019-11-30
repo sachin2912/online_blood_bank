@@ -1,0 +1,17 @@
+.faq {
+    width: 100%;
+    margin: 0 auto;
+    color: blue;
+    padding: 5%;
+    text-align: center;
+}
+
+.answer {
+    display: none;
+    max-width: 40%;
+}
+
+.Question {
+    cursor: pointer;
+    color: green;
+}

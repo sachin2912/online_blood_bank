@@ -8,7 +8,7 @@
     $api_obj = new api_1(new DB,"user_complains");
     $result = $api_obj->get_details("c_id,uname,h_name,complain,action,admin_uname"," ");
     echo "<div id='admin-hospital-details'>";
-    echo "<h1 style='color: blue;'> ALL COMPLAIN DETAILS </h1>";
+    echo "<h1 style='color: blue; text-align: center;'> ALL COMPLAIN DETAILS </h1>";
     if(isset($result))
     {
         echo "<table width=100% cellpading=15px align='center'>
@@ -71,7 +71,7 @@
     }
     else
     {
-        echo "<div style='padding: 50px; text-align: center; color: red;font-size: 40px;'>No Hospitals Yet Registered !!!</div>";
+        echo "<div style='padding: 50px; text-align: center; color: red;font-size: 40px;'>No Complains Yet Registered !!!</div>";
     }
     echo "</div>";
 ?>

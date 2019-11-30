@@ -67,6 +67,8 @@
   <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
   <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
   <script src="https://js.api.here.com/v3/3.1/mapsjs-clustering.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://js.api.here.com/v3/3.1/mapsjs-ui.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
 </head>
 <div id="request-main">
   <h1 style="text-align: center;"> Select the Blood Group for donatation <h1>
@@ -81,94 +83,98 @@
     <button  id="btn-AB-">AB-</button>
     
   </div>
-<div id="requests-users-details" style="width: 50%; height: 480px; float: left;">
-  <?php
-    $arrall = ["O+","O-","A+","A-","B-","B+","AB+","AB-"];
-    echo display_users($acc_users,$arrall);
-  ?>
-</div>
-<div style="display: none;" id="O_pos_view">
+  <div id="requests-users-details" style="width: 50%; float: left;">
+    <?php
+      $arrall = ["O+","O-","A+","A-","B-","B+","AB+","AB-"];
+      echo display_users($acc_users,$arrall);
+    ?>
+  </div>
+  <div style="display: none;" id="O_pos_view">
+        <?php 
+        
+        $arr= ["O+","O-"];
+        echo display_users($acc_users,$arr); 
+        ?>
+  </div>
+  <div style="display: none;" id="O_neg_view">
       <?php 
-      
-      $arr= ["O+","O-"];
-      echo display_users($acc_users,$arr); 
-      ?>
-</div>
-<div style="display: none;" id="O_neg_view">
+        $arr= ["O-"];
+        echo display_users($acc_users,$arr); 
+        ?>
+  </div>
+  <div style="display: none;" id="A_pos_view">
+  <?php 
+        $arr= ["O+","O-","A+","A-"];
+        echo display_users($acc_users,$arr); ?>
+  </div>
+  <div style="display: none;" id="A_neg_view">
+  <?php 
+        $arr= ["A-","O-"];
+        echo display_users($acc_users,$arr); 
+        ?>
+  </div>
+  <div style="display: none;" id="B_pos_view">
+  <?php 
+        $arr= ["B+","B-","O+","O-"];
+        echo display_users($acc_users,$arr); ?>
+  </div>
+  <div style="display: none;" id="B_neg_view">
+  <?php 
+        $arr= ["B-","O-"];
+        echo display_users($acc_users,$arr); ?>
+  </div>
+  <div style="display: none;" id="AB_pos_view">
+  <?php 
+        $arr= ["O+","O-","A+","A-","B-","B+","AB+","AB-"];
+        echo display_users($acc_users,$arr); ?>
+  </div>
+  <div style="display: none;" id="AB_neg_view">
     <?php 
-      $arr= ["O-"];
+      $arr= ["B-","O-","A-","AB-"];
       echo display_users($acc_users,$arr); 
-      ?>
-</div>
-<div style="display: none;" id="A_pos_view">
-<?php 
-      $arr= ["O+","O-","A+","A-"];
-      echo display_users($acc_users,$arr); ?>
-</div>
-<div style="display: none;" id="A_neg_view">
-<?php 
-      $arr= ["A-","O-"];
-      echo display_users($acc_users,$arr); 
-      ?>
-</div>
-<div style="display: none;" id="B_pos_view">
-<?php 
-      $arr= ["B+","B-","O+","O-"];
-      echo display_users($acc_users,$arr); ?>
-</div>
-<div style="display: none;" id="B_neg_view">
-<?php 
-      $arr= ["B-","O-"];
-      echo display_users($acc_users,$arr); ?>
-</div>
-<div style="display: none;" id="AB_pos_view">
-<?php 
-      $arr= ["O+","O-","A+","A-","B-","B+","AB+","AB-"];
-      echo display_users($acc_users,$arr); ?>
-</div>
-<div style="display: none;" id="AB_neg_view">
-  <?php 
-    $arr= ["B-","O-","A-","AB-"];
-    echo display_users($acc_users,$arr); 
-  ?>
-</div>
-  <div style="width: 40%; height: 80%; float: right;" id="mapContainer"></div>
+    ?>
+  </div>
+    <div style="width: 40%; height: 80%; float: right;" id="mapContainer"></div>
 
-<script>
-  var platform = new H.service.Platform({
-    'apikey': 'zluYyS_KqQjpwtE9Sb3xRZITeU9EcxD_xApSq89dyA8'
+    <script>
+      var platform = new H.service.Platform({
+        'apikey': 'zluYyS_KqQjpwtE9Sb3xRZITeU9EcxD_xApSq89dyA8'
+        });
+        var svgMarkup = '<svg width="24" height="24" ' +
+      'xmlns="http://www.w3.org/2000/svg">' +
+      '<rect stroke="white" fill="#1b468d" x="1" y="1" width="22" ' +
+      'height="22" /><text x="12" y="18" font-size="12pt" ' +
+      'font-family="Arial" font-weight="bold" text-anchor="middle" ' +
+      'fill="white">H</text></svg>';
+      var maptypes = platform.createDefaultLayers();
+      var icon = new H.map.Icon(svgMarkup),
+      coords = {lng: <?php echo $result[0]["longitude"]; ?>, lat: <?php echo $result[0]["latitude"];?>},
+      marker = new H.map.Marker(coords, {icon: icon});
+      var dataPoints = [];
+      <?php 
+      for($i = 0; $i < count($acc_users) ; $i++)
+      {
+      echo "dataPoints.push(new H.clustering.DataPoint(".$acc_users[$i]["latitude"].",".$acc_users[$i]["longitude"]."));";
+      }
+      ?>
+    var map = new H.Map(
+    document.getElementById('mapContainer'),
+    maptypes.vector.normal.map,
+    {
+      zoom: 10,
+      
     });
-    var svgMarkup = '<svg width="24" height="24" ' +
-  'xmlns="http://www.w3.org/2000/svg">' +
-  '<rect stroke="white" fill="#1b468d" x="1" y="1" width="22" ' +
-  'height="22" /><text x="12" y="18" font-size="12pt" ' +
-  'font-family="Arial" font-weight="bold" text-anchor="middle" ' +
-  'fill="white">H</text></svg>';
-  var maptypes = platform.createDefaultLayers();
-  var icon = new H.map.Icon(svgMarkup),
-  coords = {lng: <?php echo $result[0]["longitude"]; ?>, lat: <?php echo $result[0]["latitude"];?>},
-  marker = new H.map.Marker(coords, {icon: icon});
-  var dataPoints = [];
-  <?php 
-  for($i = 0; $i < count($acc_users) ; $i++)
-  {
-  echo "dataPoints.push(new H.clustering.DataPoint(".$acc_users[$i]["latitude"].",".$acc_users[$i]["longitude"]."));";
-  }
-  ?>
-var map = new H.Map(
-document.getElementById('mapContainer'),
-maptypes.vector.normal.map,
-{
-  zoom: 10,
-  
-});
-map.addObject(marker);
-map.setCenter(coords);
-var clusteredDataProvider = new H.clustering.Provider(dataPoints);
+    map.addObject(marker);
+    map.setCenter(coords);
+    var clusteredDataProvider = new H.clustering.Provider(dataPoints);
 
-// Create a layer that includes the data provider and its data points: 
-var layer = new H.map.layer.ObjectLayer(clusteredDataProvider);
+    // Create a layer that includes the data provider and its data points: 
+    var layer = new H.map.layer.ObjectLayer(clusteredDataProvider);
 
-// Add the layer to the map:
-map.addLayer(layer);
-</script>
+    // Add the layer to the map:
+    map.addLayer(layer);
+   
+    var ui = H.ui.UI.createDefault(map, maptypes);
+    var zoom = ui.getControl('zoom');
+    </script>
+</div>

@@ -26,6 +26,11 @@ function validate(v)
             alert ("Username not Unique");
             return false;
         }
+        else if (document.getElementById("user_email").value == "not valid" )
+        {
+            alert ("Email not Unique");
+            return false;
+        }
         else if (document.getElementById("pass") == document.getElementById("confirm_pass") )
         {
             alert("Password and Confirm password does not match . Both are different !! ");
@@ -40,7 +45,9 @@ function validate(v)
         {
             alert("Password and Confirm password does not match . Both are different !! ");
             return false;
-        }    
+        }
+        
+        return true;    
     }
     
 }
